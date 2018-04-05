@@ -25,6 +25,7 @@ RUN set -e; \
         apt-get install --yes\
                 vim \
                 git \
+                byobu \
         ;
 
 # Fix old pip.
@@ -53,5 +54,6 @@ ADD ./textsum/data /app/data
 
 # # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install --upgrade tensorflow
 #
 # RUN python extracter_script.py raw_data/foods.txt extracted_data/review_summary.csv
