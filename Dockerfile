@@ -5,7 +5,15 @@ MAINTAINER Sameer Mahabole <sameer.mahabole@gmail.com>
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app.
-ADD . /app
+ADD ./textsum /app
+# This is so called 'toy data'. We might need to add a much larger amount of
+# data, but only necessary, for now we're just testing, so the toy data is
+# fine.
+ADD ./textsum/data /app/data
+# We also need logs/ and data/ dirs in the container, but first we need to
+# confirm that the changes in logs need to be version controlled or does it
+# make sense to reuse those. Same goes with the WORKSPACE file, so for now
+# we're passing them as volumes.
 
 RUN apt-get update && yes | apt-get upgrade
 
